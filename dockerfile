@@ -6,10 +6,10 @@ RUN pecl install zip && docker-php-ext-enable zip
 
 ##安装swoole redis xdebug插件
 RUN pecl install redis-4.0.1 \
-    && pecl install xdebug-2.6.0 \ && pecl install swoole\
-    && docker-php-ext-enable redis xdebug swoole 
+     && pecl install swoole\
+    && docker-php-ext-enable redis swoole 
 #替换插件配置
-COPY ./conf/conf.d/docker-php-ext-xdebug.ini  /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+#COPY ./conf/conf.d/docker-php-ext-xdebug.ini  /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 #COPY ./conf/php.ini /usr/local/etc/php/php.ini
 #安装composer、laravel-installer
 COPY ./shell/* /home/app/shell/
